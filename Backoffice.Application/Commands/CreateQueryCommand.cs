@@ -14,10 +14,14 @@ namespace Backoffice.Application.Commands
             QueryTypes type)
         {
             if (string.IsNullOrWhiteSpace(query))
-                throw new ArgumentException("The query must not be empty.", nameof(query));
+                throw new ArgumentException(
+                    "The query must not be empty.",
+                    nameof(query));
 
             if (Enum.IsDefined(typeof(QueryTypes), type) is false)
-                throw new ArgumentException("The query type must be one of the valid values.", nameof(query));
+                throw new ArgumentException(
+                    "The query type must be one of the valid values.",
+                    nameof(query));
 
             Query = query;
             Type = type;

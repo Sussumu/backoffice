@@ -1,9 +1,10 @@
 ﻿using Backoffice.Application.Commands;
+using System.Threading.Tasks;
 
 namespace Backoffice.Application.Ports
 {
     public interface ICreateQuery
     {
-        void Create(CreateQueryCommand command);
+        Task Create(CreateQueryCommand command);
     }
 }
