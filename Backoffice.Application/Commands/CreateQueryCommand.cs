@@ -9,6 +9,8 @@ namespace Backoffice.Application.Commands
 
         public QueryTypes Type { get; }
 
+        private CreateQueryCommand() { }
+
         public CreateQueryCommand(
             string query,
             QueryTypes type)

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SimpleInjector;
 
 namespace Backoffice.WebApi
 {
@@ -10,20 +11,26 @@ namespace Backoffice.WebApi
     {
         private IConfiguration Configuration { get; }
 
+        private readonly Container _container;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            _container = new Container();
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
 
-            ConfigureDependencyInjection();
+            ConfigureDependencyInjection(services, _container);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSimpleInjector(_container);
+            _container.Verify();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
