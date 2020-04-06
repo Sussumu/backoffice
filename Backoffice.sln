@@ -18,7 +18,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backoffice.Application", "B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backoffice.WebApi", "Backoffice.WebApi\Backoffice.WebApi.csproj", "{70661162-73E2-4870-9F94-3F32EF0D9F24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backoffice.Adapters.Database", "Backoffice.Adapters.Database\Backoffice.Adapters.Database.csproj", "{112CB788-C261-4068-8443-86982FAB04E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backoffice.Adapters.QueryDatabase", "Backoffice.Adapters.Database\Backoffice.Adapters.QueryDatabase.csproj", "{112CB788-C261-4068-8443-86982FAB04E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
