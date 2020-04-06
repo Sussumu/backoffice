@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Backoffice.Adapters.Database\Backoffice.Adapters.Database.csproj" />
+    <ProjectReference Include="..\Backoffice.Adapters.Database\Backoffice.Adapters.QueryDatabase.csproj" />
     <ProjectReference Include="..\Backoffice.Application\Backoffice.Application.csproj" />
   </ItemGroup>
 
