@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 
 namespace Backoffice.Adapters.QueryRunner.Adapters
 {
-    public class QueryRunnerForWriteOperation : IQueryRunner
+    public class QueryRunnerForWriteOperation : IQueryRunner<int>
     {
-        public async Task<Result> Run(long id)
+        public async Task<Result<int>> Run(long id)
         {
             throw new System.NotImplementedException();
         }
