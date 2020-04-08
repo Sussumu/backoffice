@@ -10,19 +10,17 @@ namespace Backoffice.WebApi.Controllers
     [Route("query")]
     public class QueryRunnerController : ControllerBase
     {
-        public IQueryRunner<object> Runner { get; }
+        public IQueryRunner Runner { get; }
 
-        public QueryRunnerController(IQueryRunner<object> runner)
+        public QueryRunnerController(IQueryRunner runner)
         {
             Runner = runner ?? throw new ArgumentNullException(nameof(runner));
         }
 
         [Route("{id}/run")]
-        public async Task<Result<object>> Run(long id)
+        public async Task<Result> Run(long id)
         {
-            var result = await Runner.Run(id);
-
-            return Result<object>.Ok();
+            return await Runner.Run(id);
         }
     }
 }

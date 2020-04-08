@@ -1,14 +1,15 @@
 ﻿using Backoffice.Application.Contracts;
 using Backoffice.Application.Ports;
+using System;
 using System.Threading.Tasks;
 
 namespace Backoffice.Adapters.QueryRunner.Adapters
 {
-    public class QueryRunnerForWriteOperation : IQueryRunner<int>
+    public class QueryRunner : IQueryRunner
     {
-        public async Task<Result<int>> Run(long id)
+        public Task<Result> Run(long id)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

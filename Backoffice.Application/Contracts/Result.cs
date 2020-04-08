@@ -3,33 +3,33 @@ using System.Linq;
 
 namespace Backoffice.Application.Contracts
 {
-    public class Result<T>
+    public class Result
     {
         public bool Success { get; }
-        public T Data { get; }
+        public object Data { get; }
         public List<string> Errors { get; }
 
-        public static Result<T> Ok()
+        public static Result Ok()
         {
-            return new Result<T>(true);
+            return new Result(true);
         }
 
-        public static Result<T> Ok(T data)
+        public static Result Ok(object data)
         {
-            return new Result<T>(true, data);
+            return new Result(true, data);
         }
 
-        public static Result<T> Error(T data)
+        public static Result Error(object data)
         {
-            return new Result<T>(false, data);
+            return new Result(false, data);
         }
 
-        public static Result<T> Error(T data, IEnumerable<string> errors)
+        public static Result Error(object data, IEnumerable<string> errors)
         {
-            return new Result<T>(false, data, errors);
+            return new Result(false, data, errors);
         }
 
-        private Result(bool success, T data = default, IEnumerable<string> errors = null)
+        private Result(bool success, object data = default, IEnumerable<string> errors = null)
         {
             Success = success;
             Data = data;

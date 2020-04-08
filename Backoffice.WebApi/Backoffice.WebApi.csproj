@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Backoffice.Adapters.Database\Backoffice.Adapters.QueryDatabase.csproj" />
+    <ProjectReference Include="..\Backoffice.Adapters.QueryRunner\Backoffice.Adapters.QueryRunner.csproj" />
     <ProjectReference Include="..\Backoffice.Application\Backoffice.Application.csproj" />
   </ItemGroup>
 

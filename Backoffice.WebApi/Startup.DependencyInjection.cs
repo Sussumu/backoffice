@@ -1,5 +1,6 @@
 ﻿using Backoffice.Adapters.Database.Adapters;
 using Backoffice.Adapters.Database.Configurations;
+using Backoffice.Adapters.QueryRunner.Adapters;
 using Backoffice.Application.Ports;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,8 +23,6 @@ namespace Backoffice.WebApi
 
             ConfigureBinds(container);
             ConfigureAdapters(container);
-
-            _container.Verify();
         }
 
         private void ConfigureBinds(Container container)
@@ -36,6 +35,8 @@ namespace Backoffice.WebApi
         private static void ConfigureAdapters(Container container)
         {
             container.Register<ICreateQuery, QueryWriter>();
+
+            container.Register<IQueryRunner, QueryRunner>();
         }
     }
 }

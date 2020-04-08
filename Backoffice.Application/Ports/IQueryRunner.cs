@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace Backoffice.Application.Ports
 {
-    public interface IQueryRunner<T>
+    public interface IQueryRunner
     {
-        Task<Result<T>> Run(long id);
+        Task<Result> Run(long id);
     }
 }
