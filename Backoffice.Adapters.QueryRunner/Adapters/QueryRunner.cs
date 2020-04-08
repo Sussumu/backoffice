@@ -7,7 +7,7 @@ namespace Backoffice.Adapters.QueryRunner.Adapters
 {
     public class QueryRunner : IQueryRunner
     {
-        public Task<Result> Run(long id)
+        public Task<Result> Run(int id)
         {
             throw new NotImplementedException();
         }

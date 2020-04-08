@@ -18,7 +18,7 @@ namespace Backoffice.WebApi.Controllers
         }
 
         [Route("{id}/run")]
-        public async Task<Result> Run(long id)
+        public async Task<Result> Run(int id)
         {
             return await Runner.Run(id);
         }
