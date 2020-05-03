@@ -7,6 +7,12 @@ create table QueryType (
 	Name varchar(50) not null
 )
 
+insert into QueryType values
+('Select'),
+('Insert'),
+('Update'),
+('Delete')
+
 create table Query (
 	Id int not null primary key identity(1, 1),
 	Name varchar(100) not null,
