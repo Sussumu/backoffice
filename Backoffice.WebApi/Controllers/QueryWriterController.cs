@@ -17,7 +17,7 @@ namespace Backoffice.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(CreateQueryCommand command)
+        public async Task<IActionResult> Post([FromBody] CreateQueryCommand command)
         {
             await QueryCreator.Create(command);
 

@@ -17,6 +17,7 @@ namespace Backoffice.WebApi.Controllers
             Runner = runner ?? throw new ArgumentNullException(nameof(runner));
         }
 
+        [HttpGet]
         [Route("{id}/run")]
         public async Task<Result> Run(int id)
         {
