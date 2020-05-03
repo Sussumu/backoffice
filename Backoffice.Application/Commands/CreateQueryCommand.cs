@@ -1,42 +1,20 @@
 ﻿using Backoffice.Application.Enums;
-using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Backoffice.Application.Commands
 {
     public class CreateQueryCommand
     {
-        public string Name { get; }
-        public string Description { get; }
-        public string Query { get; }
-        public QueryTypes Type { get; }
+        [Required]
+        public string Name { get; set; }
 
-        private CreateQueryCommand() { }
+        [Required]
+        public string Description { get; set; }
 
-        public CreateQueryCommand(
-            string name,
-            string description,
-            string query,
-            QueryTypes type)
-        {
-            if (string.IsNullOrWhiteSpace(name))
-                throw new ArgumentException(
-                    "The query's name must not be empty.",
-                    nameof(name));
+        [Required]
+        public string Query { get; set; }
 
-            if (string.IsNullOrWhiteSpace(query))
-                throw new ArgumentException(
-                    "The query must not be empty.",
-                    nameof(query));
-
-            if (Enum.IsDefined(typeof(QueryTypes), type) is false)
-                throw new ArgumentException(
-                    "The query type must be one of the valid values.",
-                    nameof(query));
-
-            Name = name;
-            Description = description;
-            Query = query;
-            Type = type;
-        }
+        [Required]
+        public QueryTypes Type { get; set; }
     }
 }
