@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 
 namespace Backoffice.Application.Ports
 {
-    public interface IQueryRunner
+    public interface IQueryRunnerHandler
     {
-        Task<QueryRunResult> Run(QueryRunnerCommand command);
+        Task<Result<QueryRunResult>> Run(QueryRunnerCommand command);
     }
 }

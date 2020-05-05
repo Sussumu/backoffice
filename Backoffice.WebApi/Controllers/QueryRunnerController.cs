@@ -1,4 +1,5 @@
-﻿using Backoffice.Application.Contracts;
+﻿using Backoffice.Application.Commands;
+using Backoffice.Application.Contracts;
 using Backoffice.Application.Ports;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,18 +11,18 @@ namespace Backoffice.WebApi.Controllers
     [Route("query")]
     public class QueryRunnerController : ControllerBase
     {
-        public IQueryRunner Runner { get; }
+        public IQueryRunnerHandler Handler { get; }
 
-        public QueryRunnerController(IQueryRunner runner)
+        public QueryRunnerController(IQueryRunnerHandler handler)
         {
-            Runner = runner ?? throw new ArgumentNullException(nameof(runner));
+            Handler = handler ?? throw new ArgumentNullException(nameof(handler));
         }
 
         [HttpGet]
         [Route("{id}/run")]
-        public async Task<Result> Run(int id)
+        public async Task<Result<QueryRunResult>> Run(int id)
         {
-            return await Runner.Run(id);
+            return await Handler.Run(new QueryRunnerCommand(id));
         }
     }
 }

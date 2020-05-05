@@ -1,6 +1,6 @@
 ﻿using Backoffice.Adapters.Database.Adapters;
 using Backoffice.Adapters.Database.Configurations;
-using Backoffice.Adapters.QueryRunner.Adapters;
+using Backoffice.Adapters.QueryDatabase.Adapters;
 using Backoffice.Application.Ports;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,7 +36,11 @@ namespace Backoffice.WebApi
         {
             container.Register<ICreateQuery, QueryWriter>();
 
+            container.Register<IQueryGetter, QueryReader>();
+
             container.Register<IQueryRunner, QueryRunner>();
+
+            container.Register<IQueryRunnerHandler, QueryRunnerWithQueryValidation>();
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Backoffice.Application.Contracts
         private Result(bool success, IEnumerable<Error> errors = null)
         {
             Success = success;
-            Errors = errors.ToList();
+            Errors = errors?.ToList();
         }
     }
 
@@ -31,6 +31,8 @@ namespace Backoffice.Application.Contracts
 
         public static Result<T> Error(T data) => new Result<T>(false, data);
 
+        public static Result<T> Error(Error error) => new Result<T>(false, null, new List<Error> { error });
+
         public static Result<T> Error(T data, Error error) => new Result<T>(false, data, new List<Error> { error });
 
         public static Result<T> Error(T data, IEnumerable<Error> errors) => new Result<T>(false, data, errors);
@@ -39,7 +41,7 @@ namespace Backoffice.Application.Contracts
         {
             Success = success;
             Data = data;
-            Errors = errors.ToList();
+            Errors = errors?.ToList();
         }
     }
 }
