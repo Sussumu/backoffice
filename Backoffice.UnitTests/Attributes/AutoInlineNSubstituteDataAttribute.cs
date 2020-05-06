@@ -1,4 +1,5 @@
 ﻿using AutoFixture.Xunit2;
+using Xunit;
 
 namespace Backoffice.UnitTests.Attributes
 {
