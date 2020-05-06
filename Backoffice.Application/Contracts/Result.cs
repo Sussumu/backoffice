@@ -17,7 +17,7 @@ namespace Backoffice.Application.Contracts
         private Result(bool success, IEnumerable<Error> errors = null)
         {
             Success = success;
-            Errors = errors?.ToList();
+            Errors = errors?.ToList() ?? new List<Error>();
         }
     }
 
@@ -41,7 +41,7 @@ namespace Backoffice.Application.Contracts
         {
             Success = success;
             Data = data;
-            Errors = errors?.ToList();
+            Errors = errors?.ToList() ?? new List<Error>();
         }
     }
 }
