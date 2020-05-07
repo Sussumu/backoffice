@@ -38,9 +38,10 @@ namespace Backoffice.WebApi
 
             container.Register<IQueryGetter, QueryReader>();
 
-            container.Register<IQueryRunner, QueryRunner>();
-
             container.Register<IQueryRunnerHandler, QueryRunnerWithQueryValidation>();
+
+            container.Register<IQueryRunner, QueryRunner>();
+            container.RegisterDecorator<IQueryRunner, QueryRunnerWithErrorHandler>();
         }
     }
 }
