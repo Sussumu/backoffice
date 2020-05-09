@@ -1,4 +1,6 @@
 ﻿using Backoffice.Application.Enums;
+using Backoffice.Application.Models;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Backoffice.Application.Commands
@@ -15,6 +17,8 @@ namespace Backoffice.Application.Commands
         public string Query { get; set; }
 
         [Required]
-        public QueryTypes Type { get; set; }
+        public QueryTypes QueryType { get; set; }
+
+        public List<QueryParam> Params { get; set; }
     }
 }

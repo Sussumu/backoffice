@@ -18,11 +18,11 @@ namespace Backoffice.WebApi.Controllers
             Handler = handler ?? throw new ArgumentNullException(nameof(handler));
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("{id}/run")]
-        public async Task<Result> Run(int id)
+        public async Task<Result> Run(int id, [FromBody]object queryParams)
         {
-            return await Handler.Run(new QueryRunnerCommand(id));
+            return await Handler.Run(new QueryRunnerCommand(id, queryParams));
         }
     }
 }

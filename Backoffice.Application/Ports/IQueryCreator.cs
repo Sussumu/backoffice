@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace Backoffice.Application.Ports
 {
-    public interface ICreateQuery
+    public interface IQueryCreator
     {
-        Task Create(CreateQueryCommand command);
+        Task<int> Create(CreateQueryCommand command);
     }
 }

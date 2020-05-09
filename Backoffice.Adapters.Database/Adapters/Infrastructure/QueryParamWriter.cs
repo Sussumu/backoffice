@@ -5,31 +5,35 @@ using Dapper;
 using System;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace Backoffice.Adapters.Database.Adapters.Infrastructure
 {
-    public class QueryWriter : IQueryCreator
+    public class QueryParamWriter : IQueryParamCreator
     {
         public QueriesDatabaseConfiguration Configuration { get; }
 
-        public QueryWriter(QueriesDatabaseConfiguration configuration)
+        public QueryParamWriter(QueriesDatabaseConfiguration configuration)
         {
             Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }
 
-        public async Task<int> Create(CreateQueryCommand command)
+        public async Task Create(CreateQueryParamCommand queryParamsCommand)
         {
             using (var connection = new SqlConnection(Configuration.ConnectionString))
-                return await connection.ExecuteScalarAsync<int>(Query, command);
+            using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+            {
+                await connection.ExecuteAsync(Query, queryParamsCommand.Params);
+
+                scope.Complete();
+            }
         }
 
         private static string Query
         {
             get => @"
-                INSERT INTO Query (Name, Description, Query, QueryType) VALUES
-                (@Name, @Description, @Query, @QueryType);
-
-                SELECT SCOPE_IDENTITY()";
+                INSERT INTO QueryParam (Name, Description, QueryId) VALUES
+                (@Name, @Description, @QueryId)";
         }
     }
 }

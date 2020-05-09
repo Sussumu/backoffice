@@ -9,17 +9,23 @@ namespace Backoffice.WebApi.Controllers
     [Route("query")]
     public class QueryWriterController : ControllerBase
     {
-        public ICreateQuery QueryCreator { get; }
+        public IQueryCreator QueryCreator { get; }
+        public IQueryParamCreator QueryParamCreator { get; }
 
-        public QueryWriterController(ICreateQuery queryCreator)
+        public QueryWriterController(
+            IQueryCreator queryCreator,
+            IQueryParamCreator queryParamCreator)
         {
             QueryCreator = queryCreator ?? throw new System.ArgumentNullException(nameof(queryCreator));
+            QueryParamCreator = queryParamCreator ?? throw new System.ArgumentNullException(nameof(queryParamCreator));
         }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateQueryCommand command)
         {
-            await QueryCreator.Create(command);
+            var queryId = await QueryCreator.Create(command);
+
+            await QueryParamCreator.Create(new CreateQueryParamCommand(queryId, command.Params));
 
             return Ok();
         }

@@ -8,9 +8,10 @@
 
         public object Params { get; set; }
 
-        public QueryRunnerCommand(int id)
+        public QueryRunnerCommand(int id, object queryParams)
         {
             Id = id;
+            Params = queryParams;
         }
     }
 }
