@@ -22,10 +22,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backoffice.Adapters.QueryDa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database Scripts", "Database Scripts", "{1E0D5E9E-1911-49BB-82D0-6AAC2D226A5A}"
 	ProjectSection(SolutionItems) = preProject
-		create-database.sql = create-database.sql
+		1-create-database.sql = 1-create-database.sql
+		2-add-query-params-table.sql = 2-add-query-params-table.sql
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backoffice.UnitTests", "Backoffice.UnitTests\Backoffice.UnitTests.csproj", "{A080BF58-B7AA-4C81-A900-A6250E7F2EBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backoffice.UnitTests", "Backoffice.UnitTests\Backoffice.UnitTests.csproj", "{A080BF58-B7AA-4C81-A900-A6250E7F2EBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

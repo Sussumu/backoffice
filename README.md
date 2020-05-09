@@ -27,9 +27,7 @@ Whenever it's ready! I have a problem in finishing projects so this one will be 
 Launching in small steps is the best way to keep working. I envisioned these steps but they can change at any moment.
 
 1. A user should be able to insert a query and call it
-   This one was successfully tested on the last commit. The most basic piece of this application is proved. You can store a query and call it. 
-   Now it needs a bunch of tests and validations to certify that nothing is wrong. However, it's not the time to bulletproof the feature yet. 
-   Since we can't verify the user's authenticity we also can't stop him from executing a query that removes him from the database, for example.
+   The user can insert a query and call it, but without passing any parameters which is a shame. Doing that now!
 
 2. API calls should join this equation
 
