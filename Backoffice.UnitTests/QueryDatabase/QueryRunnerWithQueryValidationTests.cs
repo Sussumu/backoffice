@@ -33,7 +33,7 @@ namespace Backoffice.UnitTests.QueryDatabase
             QueryRunnerWithQueryValidation sut,
             QueryRunnerCommand command,
             QueryEntity query,
-            QueryRunResult runResult)
+            Result runResult)
         {
             sut.QueryReader.Get(command.Id)
                 .Returns(query);
@@ -44,7 +44,6 @@ namespace Backoffice.UnitTests.QueryDatabase
 
             result.Errors.Should().BeEmpty();
             result.Data.Should().Be(runResult);
-            result.Data.QueryId.Should().Be(command.Id);
         }
     }
 }

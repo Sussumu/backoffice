@@ -20,7 +20,7 @@ namespace Backoffice.WebApi.Controllers
 
         [HttpGet]
         [Route("{id}/run")]
-        public async Task<Result<QueryRunResult>> Run(int id)
+        public async Task<Result> Run(int id)
         {
             return await Handler.Run(new QueryRunnerCommand(id));
         }

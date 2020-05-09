@@ -6,6 +6,6 @@ namespace Backoffice.Application.Ports
 {
     public interface IQueryRunnerHandler
     {
-        Task<Result<QueryRunResult>> Run(QueryRunnerCommand command);
+        Task<Result> Run(QueryRunnerCommand command);
     }
 }

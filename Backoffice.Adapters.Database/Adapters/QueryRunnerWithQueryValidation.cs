@@ -20,20 +20,18 @@ namespace Backoffice.Adapters.QueryDatabase.Adapters
             QueryReader = queryReader ?? throw new ArgumentNullException(nameof(queryReader));
         }
 
-        public async Task<Result<QueryRunResult>> Run(QueryRunnerCommand command)
+        public async Task<Result> Run(QueryRunnerCommand command)
         {
             var query = await QueryReader.Get(command.Id);
 
             if (query is null)
-                return Result<QueryRunResult>.Error(QueryErrors.QueryByIdDoesNotExit);
+                return Result.Error(QueryErrors.QueryByIdDoesNotExit);
 
             command.Query = query.Query;
 
             var result = await Runner.Run(command);
 
-            result.QueryId = command.Id;
-
-            return Result<QueryRunResult>.Ok(result);
+            return Result.Ok(result);
         }
     }
 }

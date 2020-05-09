@@ -15,7 +15,7 @@ namespace Backoffice.Adapters.QueryDatabase.Adapters
             Next = next ?? throw new ArgumentNullException(nameof(next));
         }
 
-        public async Task<QueryRunResult> Run(QueryRunnerCommand command)
+        public async Task<Result> Run(QueryRunnerCommand command)
         {
             try
             {
@@ -23,8 +23,8 @@ namespace Backoffice.Adapters.QueryDatabase.Adapters
             }
             catch (Exception ex)
             {
-                // TODO: log and return something better
-                return null;
+                // TODO: log
+                return Result.Error(ex);
             }
         }
     }

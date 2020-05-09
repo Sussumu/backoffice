@@ -18,13 +18,13 @@ namespace Backoffice.Adapters.QueryDatabase.Adapters
             Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }
 
-        public async Task<QueryRunResult> Run(QueryRunnerCommand command)
+        public async Task<Result> Run(QueryRunnerCommand command)
         {
             using (var connection = new SqlConnection(Configuration.ConnectionString))
             {
                 var result = await connection.QueryAsync(command.Query, command.Params);
 
-                return new QueryRunResult(result);
+                return Result.Ok(result);
             }
         }
     }
