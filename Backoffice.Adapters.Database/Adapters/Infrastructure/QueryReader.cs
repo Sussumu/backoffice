@@ -1,33 +1,33 @@
 ﻿using Backoffice.Adapters.Database.Configurations;
-using Backoffice.Application.Commands;
+using Backoffice.Application.Models;
 using Backoffice.Application.Ports;
 using Dapper;
 using System;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 
-namespace Backoffice.Adapters.Database.Adapters
+namespace Backoffice.Adapters.QueryDatabase.Adapters.Infrastructure
 {
-    public class QueryWriter : ICreateQuery
+    public class QueryReader : IQueryGetter
     {
         public QueriesDatabaseConfiguration Configuration { get; }
 
-        public QueryWriter(QueriesDatabaseConfiguration configuration)
+        public QueryReader(QueriesDatabaseConfiguration configuration)
         {
             Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }
 
-        public async Task Create(CreateQueryCommand command)
+        public async Task<QueryEntity> Get(int id)
         {
             using (var connection = new SqlConnection(Configuration.ConnectionString))
-                await connection.ExecuteScalarAsync(Query, command);
+                return await connection.QueryFirstOrDefaultAsync<QueryEntity>(Query, new { id });
         }
 
         private static string Query
         {
             get => @"
-                INSERT INTO Query (Name, Description, Query, Type) VALUES
-                (@Name, @Description, @Query, @Type)";
+                SELECT TOP 1 * FROM Query
+                WHERE Id = @Id";
         }
     }
 }
