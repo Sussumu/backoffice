@@ -29,9 +29,7 @@ namespace Backoffice.Adapters.QueryDatabase.Adapters
 
             command.Query = query.Query;
 
-            var result = await Runner.Run(command);
-
-            return Result.Ok(result);
+            return await Runner.Run(command);
         }
     }
 }
