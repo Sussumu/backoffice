@@ -1,4 +1,6 @@
-﻿namespace Backoffice.Application.Commands
+﻿using System.Collections.Generic;
+
+namespace Backoffice.Application.Commands
 {
     public class QueryRunnerCommand
     {
@@ -6,9 +8,9 @@
 
         public string Query { get; set; }
 
-        public object Params { get; set; }
+        public Dictionary<string, object> Params { get; set; }
 
-        public QueryRunnerCommand(int id, object queryParams)
+        public QueryRunnerCommand(int id, Dictionary<string, object> queryParams)
         {
             Id = id;
             Params = queryParams;
