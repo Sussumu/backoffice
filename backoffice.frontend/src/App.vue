@@ -15,7 +15,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import "@/styles/nord.scss";
+
 body {
   margin: 0;
   width: 100%;
@@ -24,7 +26,7 @@ body {
 
 #app {  
   height: 100vh;
-  background-color: #333;
+  background-color: $nord0;
   color: white;
 }
 </style>
