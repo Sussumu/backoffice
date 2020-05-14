@@ -28,7 +28,8 @@ Launching in small steps is the best way to keep working. I envisioned these ste
 
 1. A user should be able to insert a query and call it
    a. The user can now insert a query, call it using parameters and see the results! There's no security at all by now so you may drop the database just for fun.
-   b. Ok, we better have some interface or I'll get crazy calling endpoints via swagger.
+   b. Better start doing integration tests before things get hairy
+   c. Ok, we better have some interface or I'll get crazy calling endpoints via swagger.
 
 2. API calls should join this equation
 

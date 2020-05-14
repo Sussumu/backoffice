@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  backoffice.webapi:
+    image: ${DOCKER_REGISTRY-}backofficewebapi
+    build:
+      context: .
+      dockerfile: Backoffice.WebApi/Dockerfile    
+    depends_on:
+      - db
+
+  db:
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+      SA_PASSWORD: "1q2w3e4r"
+      ACCEPT_EULA: "Y"

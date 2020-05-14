@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  backoffice.webapi:
+    image: ${DOCKER_REGISTRY-}backofficewebapi
+    build:
+      context: .
+      dockerfile: Backoffice.WebApi/Dockerfile    
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=1q2w3e4r
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    depends_on:
+      - db
+
+  db:
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+      SA_PASSWORD: "1q2w3e4r"
+      ACCEPT_EULA: "Y"
