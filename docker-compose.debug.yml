@@ -9,13 +9,19 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTPS_PORT=44311
       - ASPNETCORE_Kestrel__Certificates__Default__Password=1q2w3e4r
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/dev_cert.pfx
+    ports:
+      - "5000"
+      - "5001"
     depends_on:
       - db
+    volumes:
+      - ./conf.d/https/:/https/
 
   db:
-    image: "mcr.microsoft.com/mssql/server"
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
     environment:
-      SA_PASSWORD: "1q2w3e4r"
+      SA_PASSWORD: "@1q2w3e4r"
       ACCEPT_EULA: "Y"
