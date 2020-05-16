@@ -23,5 +23,5 @@ services:
   db:
     image: "mcr.microsoft.com/mssql/server:2019-latest"
     environment:
-      SA_PASSWORD: "@1q2w3e4r"
+      SA_PASSWORD: "@A1q2w3e4r"
       ACCEPT_EULA: "Y"
