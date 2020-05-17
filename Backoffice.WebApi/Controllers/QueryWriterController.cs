@@ -1,6 +1,7 @@
 ﻿using Backoffice.Application.Commands;
 using Backoffice.Application.Ports;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Backoffice.WebApi.Controllers
@@ -25,7 +26,8 @@ namespace Backoffice.WebApi.Controllers
         {
             var queryId = await QueryCreator.Create(command);
 
-            await QueryParamCreator.Create(new CreateQueryParamCommand(queryId, command.Params));
+            if (command.Params != null && command.Params.Any())
+                await QueryParamCreator.Create(new CreateQueryParamCommand(queryId, command.Params));
 
             return Ok();
         }
