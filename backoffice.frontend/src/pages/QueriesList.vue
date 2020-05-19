@@ -6,6 +6,7 @@
 
 <script>
 import QueryTable from '../components/QueryTable';
+import { getAllQueries } from '../clients/queriesClient';
 
 const queries = [
     {
@@ -25,6 +26,9 @@ export default {
         return {
             queries: queries
         }
+    },
+    created: async function() {
+        await getAllQueries();
     }
 }
 </script>
