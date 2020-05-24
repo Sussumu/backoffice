@@ -27,3 +27,14 @@ services:
       ACCEPT_EULA: "Y"
     ports:
      - "1401:1433"
+
+  backoffice.frontend:
+    image: ${DOCKER_REGISTRY-}backofficefrontend
+    build:
+      context: backoffice.frontend
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - "8081:80"
