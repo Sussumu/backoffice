@@ -9,7 +9,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
-      - ASPNETCORE_HTTPS_PORT=44311
+      - ASPNETCORE_HTTPS_PORT=443
       - ASPNETCORE_Kestrel__Certificates__Default__Password=1q2w3e4r
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/dev_cert.pfx
     ports:
@@ -38,3 +38,4 @@ services:
       - '/app/node_modules'
     ports:
       - "8081:80"
+      - "8082:443"

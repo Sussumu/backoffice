@@ -8,27 +8,17 @@
 import QueryTable from '../components/QueryTable';
 import { getAllQueries } from '../clients/queriesClient';
 
-const queries = [
-    {
-        Id: 1,
-        Name: 'Test',
-        Query: 'select top 1 * from query',
-        Description: 'Selects the first result from query table',
-        Type: 1
-    }
-]
-
 export default {
     components: {
         QueryTable: QueryTable
     },
     data: function() {
         return {
-            queries: queries
+            queries: []
         }
     },
     created: async function() {
-        await getAllQueries();
+        this.queries = await getAllQueries();
     }
 }
 </script>

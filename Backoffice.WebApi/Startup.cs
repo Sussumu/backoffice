@@ -22,7 +22,11 @@ namespace Backoffice.WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddNewtonsoftJson();
+            services.AddCors();
+
+            services
+                .AddControllers()
+                .AddNewtonsoftJson();
 
             services.AddSwaggerGen(c =>
             {
@@ -35,18 +39,24 @@ namespace Backoffice.WebApi
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSimpleInjector(_container);
+
             _container.Verify();
 
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            if (env.IsDevelopment())            
+                app.UseDeveloperExceptionPage();            
 
-            app.UseHttpsRedirection();
+            app.UseHttpsRedirection();            
 
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(options => {
+                options
+                    .WithOrigins("http://localhost:8081")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+            });
 
             app.UseEndpoints(endpoints =>
             {
