@@ -1,10 +1,10 @@
 FROM mhart/alpine-node:14.2 as base
 WORKDIR /app
-COPY package.json package-lock.json ./
+COPY package*.json ./
 
 RUN npm i
 
-COPY . /app
+COPY . .
 
 EXPOSE 8080
-CMD [ "npm", "run", "serve"]
+CMD ["npm", "run", "serve"]

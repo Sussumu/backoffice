@@ -31,11 +31,10 @@ services:
   backoffice.frontend:
     image: ${DOCKER_REGISTRY-}backofficefrontend
     build:
-      context: backoffice.frontend
+      context: ./backoffice.frontend
       dockerfile: Dockerfile
     volumes:
-      - '.:/app'
+      - '/app'
       - '/app/node_modules'
     ports:
-      - "8081:80"
-      - "8082:443"
+      - "8080:8080"
