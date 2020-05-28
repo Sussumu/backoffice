@@ -21,12 +21,14 @@ services:
       - ./conf.d/https/:/https/
 
   db:
-    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    image: "mcr.microsoft.com/mssql/server:2017-CU11-ubuntu"
     environment:
       SA_PASSWORD: "@A1q2w3e4r"
       ACCEPT_EULA: "Y"
     ports:
      - "1401:1433"
+    volumes: 
+     - D:/mssql:/var/opt/mssql/data
 
   backoffice.frontend:
     image: ${DOCKER_REGISTRY-}backofficefrontend
