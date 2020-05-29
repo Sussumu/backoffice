@@ -30,13 +30,14 @@ services:
     volumes: 
      - D:/mssql:/var/opt/mssql/data
 
-  backoffice.frontend:
-    image: ${DOCKER_REGISTRY-}backofficefrontend
-    build:
-      context: ./backoffice.frontend
-      dockerfile: Dockerfile
-    volumes:
-      - '/app'
-      - '/app/node_modules'
-    ports:
-      - "8080:8080"
+  # TODO: while we don't fix hot reload, we can keep using vue-cli ♥
+  # backoffice.frontend:
+  #   image: ${DOCKER_REGISTRY-}backofficefrontend
+  #   build:
+  #     context: ./backoffice.frontend
+  #     dockerfile: Dockerfile
+  #   volumes:
+  #     - '/app'
+  #     - '/app/node_modules'
+  #   ports:
+  #     - "8080:8080"
