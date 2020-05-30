@@ -5,4 +5,11 @@ const getAllQueries = async () => {
     return queries.data.data;
 };
 
-exports.getAllQueries = getAllQueries;
+const newQuery = async (query) => {
+    return await axios.post('https://localhost:5001/query', query);
+}
+
+export { 
+    getAllQueries,
+    newQuery
+}
