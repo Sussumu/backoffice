@@ -53,7 +53,7 @@ namespace Backoffice.WebApi
 
             app.UseCors(options => {
                 options
-                    .WithOrigins("https://localhost:8080")
+                    .WithOrigins("http://localhost:8080")
                     .AllowAnyHeader()
                     .AllowAnyMethod();
             });
