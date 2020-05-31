@@ -3,6 +3,7 @@ using Backoffice.Application.Models;
 using Backoffice.Application.Ports;
 using Dapper;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 
@@ -20,14 +21,25 @@ namespace Backoffice.Adapters.QueryDatabase.Adapters.Infrastructure
         public async Task<QueryEntity> Get(int id)
         {
             using (var connection = new SqlConnection(Configuration.ConnectionString))
-                return await connection.QueryFirstOrDefaultAsync<QueryEntity>(Query, new { id });
+                return await connection.QueryFirstOrDefaultAsync<QueryEntity>(QueryById, new { id });
         }
 
-        private static string Query
+        public async Task<IEnumerable<QueryEntity>> Get()
+        {
+            using (var connection = new SqlConnection(Configuration.ConnectionString))
+                return await connection.QueryAsync<QueryEntity>(QueryAll);
+        }
+
+        private static string QueryById
         {
             get => @"
                 SELECT TOP 1 * FROM Query
                 WHERE Id = @Id";
+        }
+
+        private static string QueryAll
+        {
+            get => @"SELECT * FROM Query";
         }
     }
 }
