@@ -35,8 +35,7 @@ export default {
     },
     methods: {
         submitQuery: async function () {
-            let result = await newQuery(this.query);
-            console.log(result);
+            await newQuery(this.query);            
         }
     },
     created: async function() {

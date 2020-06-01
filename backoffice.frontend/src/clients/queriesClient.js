@@ -1,7 +1,7 @@
 const axios = require('axios').default;
 
 const getAllQueries = async () => {
-    let queries = await axios.post('https://localhost:5001/query/1/run', {});
+    let queries = await axios.get('https://localhost:5001/query');
     return queries.data.data;
 };
 

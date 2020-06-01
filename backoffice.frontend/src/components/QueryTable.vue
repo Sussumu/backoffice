@@ -15,11 +15,11 @@
                 @mouseleave="onHover = false" 
                 :class="{ activeRow: onHover }"
             >
-                <td>{{query.Id}}</td>
-                <td>{{query.Name}}</td>
-                <td>{{query.Query}}</td>
-                <td>{{query.Description}}</td>
-                <td>{{query.Type}}</td>
+                <td>{{query.id}}</td>
+                <td>{{query.name}}</td>
+                <td>{{query.query}}</td>
+                <td>{{query.description}}</td>
+                <td>{{query.type}}</td>
             </tr>
         </tbody>
     </table>
