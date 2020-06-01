@@ -10,10 +10,10 @@
         <tbody>
             <tr 
                 v-for="query in queries" 
-                :key="query.Id" 
-                @mouseover="onHover = true" 
-                @mouseleave="onHover = false" 
-                :class="{ activeRow: onHover }"
+                :key="query.id" 
+                @mouseover="onMouseOver(query.id)" 
+                @mouseleave="onMouseLeave()" 
+                :class="{ activeRow: query.id == selectedRow }"
             >
                 <td>{{query.id}}</td>
                 <td>{{query.name}}</td>
@@ -36,7 +36,15 @@ export default {
     },
     data() {
         return {
-            onHover: false
+            selectedRow: -1
+        }
+    },
+    methods: {
+        onMouseOver: function (id) {
+            this.selectedRow = id;
+        },
+        onMouseLeave: function () {
+            this.selectedRow = -1;
         }
     }
 }
